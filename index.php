@@ -25,6 +25,7 @@
 		Passwork: <input type="password" name="password" class="form-control" required>
 		<div style="height: 10px;"></div>
 		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</button>
+		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</button>
 		</form>
 		<div style="height: 15px;"></div>
 		<div style="color: red; font-size: 15px;">
