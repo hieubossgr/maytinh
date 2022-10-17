@@ -1,11 +1,11 @@
 <?php
 class Staff
 {
-    public $firstName;
-    public $lastName;
+    public $first_name;
+    public $last_name;
 
     public function getFullName()
     {
-        return trim("$this->firstName $this->lastName");
+        return trim("$this->first_name $this->last_name");
     }
 }
