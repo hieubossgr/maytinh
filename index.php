@@ -20,9 +20,9 @@
 		<h2><center><span class="glyphicon glyphicon-lock"></span> ĐĂNG NHẬP</center></h2>
 		<hr>
 		<form method="POST" action="login.php">
-		Tài khoản: <input type="text" name="username" class="form-control" required>
+		Username: <input type="text" name="username" class="form-control" required>
 		<div style="height: 10px;"></div>		
-		Mật khẩu: <input type="password" name="password" class="form-control" required>
+		Passwork: <input type="password" name="password" class="form-control" required>
 		<div style="height: 10px;"></div>
 		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</button>
 		</form>
