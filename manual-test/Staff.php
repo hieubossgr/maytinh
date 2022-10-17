@@ -1,5 +1,4 @@
 <?php
-
 class Staff
 {
     public $first_name;
