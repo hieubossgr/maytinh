@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-    stage("Build PHP") {
+    stage("Build PHP and unit test") {
       agent {
         docker {
           image 'allebb/phptestrunner-73:latest'
@@ -35,7 +35,7 @@ pipeline {
       }
     }
 
-    stage("build") {
+    stage("build image") {
       agent { label 'master'}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
