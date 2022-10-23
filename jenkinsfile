@@ -15,6 +15,14 @@ pipeline {
       }
     }
 
+    stage("Pull code") {
+      agent { label 'master' }
+      steps {
+	sh "ssh web@192.168.12.33 -i /home/jenkins/web-server.pem"
+	sh "cd /srv/www/maytinh/"
+	sh "git pull"
+      }
+    }
 //    stage("build") {
 //      agent { label 'master'}
 //      environment {
