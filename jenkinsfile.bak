@@ -1,0 +1,38 @@
+pipeline {
+
+  agent none
+
+  environment {
+    DOCKER_IMAGE = "hieubossgr/jenkins-docker"
+  }
+
+  stages {
+    stage("Test") {
+      agent { label 'master'}
+      steps {
+	sh "echo 'Hello world'"
+      }
+    }
+
+    stage("Build PHP") {
+      agent {  
+	docker {
+	  image 'php:7.2-fpm'
+	  args '-u 0:0 -v /tmp:/root/.cache'
+	}
+      }
+      steps {
+        sh "echo Build PHP"
+      }
+    }
+  }
+
+  post {
+    success {
+      echo "SUCCESSFUL"
+    }
+    failure {
+      echo "FAILED"
+    }
+  }
+}
