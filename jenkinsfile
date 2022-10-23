@@ -15,18 +15,19 @@ pipeline {
       }
     }
 
-//    stage("Build PHP") {
-//      agent {  
-//	docker {
-//	  
-//	}
-//      }
+    stage("Build PHP") {
+      agent {  
+	docker {
+	  image 'php:7.2-fpm'
+	  args '-u 0:0 -v /tmp:/root/.cache'
+	}
+      }
 //      steps {
 //	sh "ssh -tt web@192.168.12.33 -i /home/jenkins/web-server.pem"
 //	sh "cd /srv/www/maytinh/"
 //	sh "git pull"
 //      }
-//    }
+    }
 //    stage("build") {
 //      agent { label 'master'}
 //      environment {
