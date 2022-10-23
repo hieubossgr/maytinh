@@ -4,7 +4,7 @@ class StaffTest extends TestCase
 {
     public function testReturnsFullName()
     {
-        require('Staff.php');
+        require('automation-test/Staff.php');
 
         $staff = new Staff;
 
