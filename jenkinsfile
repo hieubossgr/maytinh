@@ -31,7 +31,7 @@ pipeline {
 	echo 'Install phpunit'
 	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
         echo 'Running PHPUnit tests...'
-        sh 'php $WORKSPACE/vendor/bin/phpunit automation-test/tests'
+        sh '$WORKSPACE/vendor/bin/phpunit automation-test/tests'
       }
     }
   }
