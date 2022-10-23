@@ -10,7 +10,8 @@ pipeline {
     stage("Test") {
       agent { label 'master'}
       steps {
-        sh "phpunit automation-test/tests"
+	sh "echo 'Hello world'"
+//        sh "phpunit automation-test/tests"
       }
     }
 
