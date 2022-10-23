@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "hieubossgr/jenkins-docker-php"
+    DOCKER_IMAGE = "hieubossgr/jenkins-docker-PHP"
   }
 
   stages {
