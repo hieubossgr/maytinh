@@ -29,7 +29,7 @@ pipeline {
         echo 'movie composer.phar to /usr/local/bin/composer'
         sh 'mv composer.phar /usr/local/bin/composer'
 	echo 'Install phpunit'
-	sh 'cd cd $WORKSPACE && composer require --dev phpunit/phpunit'
+	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
         echo 'Running PHPUnit tests...'
         sh 'php $WORKSPACE/vendor/bin/phpunit automation-test/tests'
       }
