@@ -1,4 +1,4 @@
 FROM allebb/phptestrunner-74:latest
+COPY . /app
 WORKDIR /app
-COPY . .
-#CMD ["php", "./index.php"]
+CMD ["php", "./index.php"]
