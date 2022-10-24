@@ -17,12 +17,12 @@ pipeline {
     stage("Build PHP and unit test") {
       agent {
         docker {
-          image 'allebb/phptestrunner-73:latest'
+          image 'allebb/phptestrunner-74:latest'
           args '-u 0:0 -v /tmp:/root/.cache'
         }
       }
       steps {
-        echo 'Running PHP 7.3 tests...'
+        echo 'Running PHP 7.4 tests...'
         sh 'php -v'
         echo 'Installing Composer'
         sh 'curl -sS https://getcomposer.org/installer | php '
