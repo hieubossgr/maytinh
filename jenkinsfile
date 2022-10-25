@@ -57,9 +57,16 @@ pipeline {
 
 
         //clean to save disk
-        //sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
-        //sh "docker image rm ${DOCKER_IMAGE}:latest"
+        sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
+        sh "docker image rm ${DOCKER_IMAGE}:latest"
       }
+    }
+
+    stage("Deploy to staging") {
+	sh "ssh -T -i $WORKSPACE/web-server.pem web@192.168.12.33 << EOF
+	    cd /srv/www/maytinh
+	    git pull
+	    EOF"
     }
   }
 
