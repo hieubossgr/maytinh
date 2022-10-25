@@ -65,7 +65,7 @@ pipeline {
     stage("Deploy to staging") {
 	agent { label 'master'}
 	steps {
-	  sh "cd /var/jenkins_home/
+	  sh "cd /var/jenkins_home/"
 	  sh "./test.sh"
 	}    
     }
