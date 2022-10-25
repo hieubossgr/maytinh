@@ -63,10 +63,10 @@ pipeline {
     }
 
     stage("Deploy to staging") {
-	sh "ssh -T -i $WORKSPACE/web-server.pem web@192.168.12.33 << EOF\n
-	    cd /srv/www/maytinh\n
-	    git pull\n
-	    EOF"
+	sh "ssh -T -i $WORKSPACE/web-server.pem web@192.168.12.33" 
+	sh "cd /srv/www/maytinh"
+	sh "git pull"
+	    
     }
   }
 
