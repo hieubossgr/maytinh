@@ -66,8 +66,7 @@ pipeline {
 	agent { label 'master'}
 	steps {
 	  echo "Pull code to server web"
-	  sh "cd /var/jenkins_home/"
-	  sh "./test.sh"
+	  sh "/var/jenkins_home/test.sh"
 	}    
     }
   }
