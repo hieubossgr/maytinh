@@ -65,9 +65,7 @@ pipeline {
     stage("Deploy to staging") {
 	agent { label 'master'}
 	steps {
-	  sh "ssh -tt -i /var/jenkins_home/web-server.pem web@192.168.12.33" 
-	  sh "cd /srv/www/maytinh"
-	  sh "git pull"
+	  sh "ssh -Tt -i /var/jenkins_home/web-server.pem web@192.168.12.33 << EOF cd /srv/www/maytinh && git pull EOF"
 	}    
     }
   }
