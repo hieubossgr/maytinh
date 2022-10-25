@@ -63,10 +63,12 @@ pipeline {
     }
 
     stage("Deploy to staging") {
-	sh "ssh -T -i $WORKSPACE/web-server.pem web@192.168.12.33" 
-	sh "cd /srv/www/maytinh"
-	sh "git pull"
-	    
+	agent { label 'master'}
+	steps {
+	  sh "ssh -T -i $WORKSPACE/web-server.pem web@192.168.12.33" 
+	  sh "cd /srv/www/maytinh"
+	  sh "git pull"
+	}    
     }
   }
 
