@@ -22,12 +22,12 @@ class StaffTest extends TestCase
     /**
      * @test
      */
-    public function only_first_name()
-    {
-        $staff = new Staff;
-        $staff->first_name = "Nguyen";
-        $this->assertEquals('Nguyen', $staff->getFullName());
-    }
+//    public function only_first_name()
+//    {
+//        $staff = new Staff;
+//        $staff->first_name = "Nguyen";
+//        $this->assertEquals('Nguyen', $staff->getFullName());
+//    }
 
     public function only_last_name()
     {
