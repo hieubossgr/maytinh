@@ -32,7 +32,7 @@ class StaffTest extends TestCase
     public function only_last_name()
     {
         $staff = new Staff;
-        $staff->last_name = "aHieu";
+        $staff->last_name = "Hieu";
         $this->assertEquals('Hieu', $staff->getFullName());
     }
 }
