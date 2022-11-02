@@ -10,12 +10,12 @@ pipeline {
     stage("Build PHP and unit test") {
       agent {
         docker {
-          image 'php:7.2-fpm-alpine'
+          image 'php:7.4-fpm-alpine'
           args '-u 0:0 -v /tmp:/root/.cache'
         }
       }
       steps {
-        echo 'Running PHP 7.2 tests...'
+        echo 'Running PHP 7.4 tests...'
         sh 'php -v'
         echo 'Installing Composer'
         sh 'curl -sS https://getcomposer.org/installer | php '
