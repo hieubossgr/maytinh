@@ -7,15 +7,22 @@ pipeline {
   }
 
   stages {
+//    stage("Test") {
+//      agent { label 'master'}
+//      steps {
+//	sh "echo 'Hello world'"
+//      }
+//    }
+
     stage("Build PHP and unit test") {
       agent {
         docker {
-          image 'php:7.2-fpm-alpine'
+          image 'allebb/phptestrunner-74:latest'
           args '-u 0:0 -v /tmp:/root/.cache'
         }
       }
       steps {
-        echo 'Running PHP 7.2 tests...'
+        echo 'Running PHP 7.4 tests...'
         sh 'php -v'
         echo 'Installing Composer'
         sh 'curl -sS https://getcomposer.org/installer | php '

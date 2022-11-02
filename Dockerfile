@@ -1,4 +1,12 @@
-FROM allebb/phptestrunner-74:latest
-COPY . /app
+# Set master image
+FROM php:7.2-fpm-alpine
+
+# Set working directory
 WORKDIR /app
-CMD ["php", "./index.php"]
+
+# Install PHP Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy existing application directory
+COPY . .
+
