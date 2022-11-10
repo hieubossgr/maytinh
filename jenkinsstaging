@@ -34,6 +34,13 @@ pipeline {
       }
     }
 
+    stage("Deploy to staging") {
+      agent { label 'master'}
+      steps {
+        echo "Pull code to server web"
+        sh "/var/jenkins_home/test.sh"
+      }
+    }
   }
 
   post {
