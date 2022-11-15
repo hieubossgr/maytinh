@@ -3,26 +3,19 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "hieubossgr/jenkins-docker"
+    DOCKER_IMAGE = "hieubossgr/jenkins-docker-php"
   }
 
   stages {
-    stage("Test") {
-      agent { label 'master'}
-      steps {
-	sh "echo 'Hello world'"
-      }
-    }
-
-    stage("Build PHP") {
+    stage("Build PHP and unit test") {
       agent {
         docker {
-          image 'allebb/phptestrunner-73:latest'
-          args '-u root:sudo'
+          image 'php:7.4-fpm-alpine'
+          args '-u 0:0 -v /tmp:/root/.cache'
         }
       }
       steps {
-        echo 'Running PHP 7.3 tests...'
+        echo 'Running PHP 7.4 tests...'
         sh 'php -v'
         echo 'Installing Composer'
         sh 'curl -sS https://getcomposer.org/installer | php '

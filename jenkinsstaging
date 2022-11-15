@@ -7,27 +7,6 @@ pipeline {
   }
 
   stages {
-    stage("Build PHP and unit test") {
-      agent {
-        docker {
-          image 'php:7.4-fpm-alpine'
-          args '-u 0:0 -v /tmp:/root/.cache'
-        }
-      }
-      steps {
-        echo 'Running PHP 7.4 tests...'
-        sh 'php -v'
-        echo 'Installing Composer'
-        sh 'curl -sS https://getcomposer.org/installer | php '
-        echo 'movie composer.phar to /usr/local/bin/composer'
-        sh 'mv composer.phar /usr/local/bin/composer'
-	echo 'Install phpunit'
-	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
-        echo 'Running PHPUnit tests...'
-        sh '$WORKSPACE/vendor/bin/phpunit automation-test/tests'
-      }
-    }
-
     stage("build image") {
       agent { label 'master'}
       environment {
@@ -55,13 +34,13 @@ pipeline {
       }
     }
 
-//    stage("Deploy to staging") {
-//	agent { label 'master'}
-//	steps {
-//	  echo "Pull code to server web"
-//	  sh "/var/jenkins_home/test.sh"
-//	}    
-//    }
+    stage("Deploy to staging") {
+      agent { label 'master'}
+      steps {
+        echo "Pull code to server web"
+        sh "/var/jenkins_home/staging.sh"
+      }
+    }
   }
 
   post {
