@@ -24,8 +24,8 @@
 		<div style="height: 10px;"></div>		
 		Passwork: <input type="password" name="password" class="form-control" required>
 		<div style="height: 10px;"></div>
-		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Hello</button>
-		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> World</button>
+		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
+		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Sign out</button>
 		</form>
 		<div style="height: 15px;"></div>
 		<div style="color: red; font-size: 15px;">
