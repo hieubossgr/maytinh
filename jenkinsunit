@@ -22,7 +22,7 @@ pipeline {
         sh 'mv composer.phar /usr/local/bin/composer'
       }
     }
-    stage("Install phpunit")
+    stage("Install phpunit") {
       steps {
 	echo 'Install phpunit'
 	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
