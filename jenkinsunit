@@ -20,9 +20,11 @@ pipeline {
         sh 'curl -sS https://getcomposer.org/installer | php '
         echo 'movie composer.phar to /usr/local/bin/composer'
         sh 'mv composer.phar /usr/local/bin/composer'
+      }
     }
 
     stage("Install phpunit") {
+      steps {
 	echo 'Install phpunit'
 	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
         echo 'Running PHPUnit tests...'
