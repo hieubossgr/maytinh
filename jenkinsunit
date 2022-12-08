@@ -34,11 +34,13 @@ pipeline {
 
   post {
     success {
-      emailext body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Success Unittest', to: 'hieubossgr@gmail.com'
+      emailext attachLog: true, body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Success Unittest', to: 'hieubossgr@gmail.com'
+
       echo "SUCCESS"
     }
     failure {
-      emailext body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Failed Unittest', to: 'hieubossgr@gmail.com'
+      emailext attachLog: true, body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Failed Unittest', to: 'hieubossgr@gmail.com'
+
       echo "FAILED"
     }
   }
