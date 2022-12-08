@@ -8,6 +8,7 @@ pipeline {
 
   stages {
     stage("Build PHP and unit test") {
+      when { branch "feature/*" }
       agent {
         docker {
           image 'php:7.4-fpm-alpine'
@@ -29,6 +30,7 @@ pipeline {
     }
 
     stage("build image") {
+      when {branch "main"}
       agent { label 'master'}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"

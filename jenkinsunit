@@ -1,19 +1,18 @@
 pipeline {
 
-  agent none
+  agent {
+    docker {
+      image 'php:7.4-fpm-alpine'
+      args '-u 0:0 -v /tmp:/root/.cache'
+    }
+  }
 
   environment {
     DOCKER_IMAGE = "hieubossgr/jenkins-docker-php"
   }
 
   stages {
-    stage("Build PHP and unit test") {
-      agent {
-        docker {
-          image 'php:7.4-fpm-alpine'
-          args '-u 0:0 -v /tmp:/root/.cache'
-        }
-      }
+    stage("Install Composer") {
       steps {
         echo 'Running PHP 7.4 tests...'
         sh 'php -v'
@@ -21,6 +20,10 @@ pipeline {
         sh 'curl -sS https://getcomposer.org/installer | php '
         echo 'movie composer.phar to /usr/local/bin/composer'
         sh 'mv composer.phar /usr/local/bin/composer'
+      }
+    }
+    stage("Install phpunit") {
+      steps {
 	echo 'Install phpunit'
 	sh 'cd $WORKSPACE && composer require --dev phpunit/phpunit'
         echo 'Running PHPUnit tests...'
@@ -31,9 +34,11 @@ pipeline {
 
   post {
     success {
-      echo "SUCCESSFUL"
+      emailext body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Success Unittest', to: 'hieubossgr@gmail.com'
+      echo "SUCCESS"
     }
     failure {
+      emailext body: 'Hello world. I am testing extended email on jenkins with unittest', subject: 'Failed Unittest', to: 'hieubossgr@gmail.com'
       echo "FAILED"
     }
   }
