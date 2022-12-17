@@ -1,0 +1,33 @@
+pipeline {
+
+  agent none
+
+  environment {
+    DOCKER_IMAGE = "hieubossgr/jenkins-docker-php"
+  }
+
+  stages {
+    stage("build image") {
+      agent { label 'master'}
+      steps {
+	echo "Hello"
+      }
+    }
+
+    stage("Deploy to staging") {
+	agent { label 'master'}
+	steps {
+	  echo "bye"
+	}    
+    }
+  }
+
+  post {
+    success {
+      echo "SUCCESSFUL"
+    }
+    failure {
+      echo "FAILED"
+    }
+  }
+}
